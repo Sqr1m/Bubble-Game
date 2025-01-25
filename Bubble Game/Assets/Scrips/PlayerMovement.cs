@@ -1,46 +1,49 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f; // Скорость движения
-    public Vector2 horizontalBounds = new Vector2(-8f, 8f); // Ограничения по ширине
-    public Vector2 verticalBounds = new Vector2(-4f, 4f); // Ограничения по высоте
+    public float speed = 5f; // Скорость движения персонажа
+    private Animator animator; // Ссылка на компонент Animator
+    private Vector2 movement; // Вектор для хранения ввода пользователя
 
-    private Animator animator; // Ссылка на Animator
-    private Vector3 originalScale; // Для поворота персонажа
+    // Границы области перемещения
+    public float minX = -8f;
+    public float maxX = 8f;
+    public float minY = -2.5f;
+    public float maxY = 2.5f;
 
     void Start()
     {
-        animator = GetComponent<Animator>(); // Получаем компонент Animator
-        originalScale = transform.localScale; // Запоминаем изначальный масштаб
+        // Получаем компонент Animator, прикрепленный к объекту
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Получаем входные данные
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        // Получаем ввод пользователя по осям Horizontal и Vertical
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
 
-        // Рассчитываем новое положение
-        Vector3 newPosition = transform.position + new Vector3(moveX, moveY, 0).normalized * speed * Time.deltaTime;
+        // Нормализуем вектор движения, чтобы скорость была постоянной
+        movement = movement.normalized;
 
-        // Ограничиваем движение
-        newPosition.x = Mathf.Clamp(newPosition.x, horizontalBounds.x, horizontalBounds.y);
-        newPosition.y = Mathf.Clamp(newPosition.y, verticalBounds.x, verticalBounds.y);
+        // Передаем значения в Animator для переключения анимаций
+        animator.SetFloat("MoveX", movement.x);
+        animator.SetFloat("MoveY", movement.y);
+        animator.SetBool("isMoving", movement.sqrMagnitude > 0);
+    }
+
+    void FixedUpdate()
+    {
+        // Перемещаем персонажа
+        Vector2 currentPosition = transform.position;
+        Vector2 newPosition = currentPosition + movement * speed * Time.fixedDeltaTime;
+
+        // Ограничиваем новую позицию заданными границами
+        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+        newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
+
+        // Применяем новую позицию к персонажу
         transform.position = newPosition;
-
-        // Передаем значения в Animator
-        animator.SetFloat("MoveX", moveX);
-        animator.SetFloat("MoveY", moveY);
-
-        // Поворот персонажа в зависимости от направления
-        if (moveX > 0)
-        {
-            transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
-        }
-        else if (moveX < 0)
-        {
-            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
-        }
     }
 }
