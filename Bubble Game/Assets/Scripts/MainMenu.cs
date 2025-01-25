@@ -19,6 +19,10 @@ public class MainMenu : MonoBehaviour
         UpdateSoundButtons();
     }
 
+    public void StartComic()
+    {
+        SceneManager.LoadScene("ComicIntroPageOneScene");
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("GameScene");
