@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement; // Вектор для хранения ввода пользователя
 
     // Границы области перемещения
-    public float minX = -8f;
-    public float maxX = 8f;
-    public float minY = -2.5f;
-    public float maxY = 2.5f;
+    public float minX = -5f;
+    public float maxX = 5f;
+    public float minY = -3f;
+    public float maxY = 3f;
 
     void Start()
     {
