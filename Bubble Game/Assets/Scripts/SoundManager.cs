@@ -39,7 +39,6 @@ public class SoundManager : MonoBehaviour
         if (clipIndex >= 0 && clipIndex < backgroundMusicClips.Length)
         {
             backgroundMusicSource.clip = backgroundMusicClips[clipIndex];
-            backgroundMusicSource.loop = true;
             backgroundMusicSource.Play();
         }
     }

@@ -1541,6 +1541,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2141786945651231869, guid: 262368e9ed060874bb7fedb54a897c83, type: 3}
+      propertyPath: backgroundMusicClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141786945651231869, guid: 262368e9ed060874bb7fedb54a897c83, type: 3}
+      propertyPath: backgroundMusicClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ca69b9805fc117499eb409ebc70b7ad, type: 3}
     - target: {fileID: 2362862343058805832, guid: 262368e9ed060874bb7fedb54a897c83, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.21099065

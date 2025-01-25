@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SequentialFadeIn : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SequentialFadeIn : MonoBehaviour
     public Button firstButton; // Drag the first button here in the Inspector
     public Button secondButton; // Drag the second button here in the Inspector
     public float fadeDuration = 1f; // Duration of each fade-in
+
 
     private void Start()
     {

@@ -33,6 +33,10 @@ public class ComicPanelController : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+    public void StartGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
 
     private IEnumerator FadeInPanel(Image panel)
     {
