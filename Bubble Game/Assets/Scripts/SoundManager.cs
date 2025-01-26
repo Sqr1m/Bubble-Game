@@ -5,39 +5,52 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     [Header("Audio Sources")]
-    public AudioSource backgroundMusicSource;
-    public AudioSource sfxSource;
+    public AudioSource backgroundMusicSource; // For background music
+    public AudioSource sfxSource;            // For sound effects
 
     [Header("Audio Clips")]
-    public AudioClip[] backgroundMusicClips;
-    public AudioClip[] sfxClips;
+    public AudioClip[] backgroundMusicClips; // Store background music tracks
+    public AudioClip[] sfxClips;             // Store various SFX clips (e.g., button clicks, collision sounds)
 
     private void Awake()
     {
-        // Singleton Pattern
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("SoundManager created and persisting across scenes.");
         }
         else
         {
             Destroy(gameObject);
+            Debug.Log("Duplicate SoundManager destroyed.");
         }
     }
 
-    // Play Background Music
-    public void PlayBackgroundMusic(int clipIndex, bool loop = true)
+    // Play background music
+    // Play background music if not already playing
+    public void PlayBackgroundMusic(int clipIndex)
     {
+        if (backgroundMusicSource.isPlaying && backgroundMusicSource.clip == backgroundMusicClips[clipIndex])
+        {
+            return; // Prevent restarting if the same clip is already playing
+        }
+
         if (clipIndex >= 0 && clipIndex < backgroundMusicClips.Length)
         {
             backgroundMusicSource.clip = backgroundMusicClips[clipIndex];
-            backgroundMusicSource.loop = loop;
+            backgroundMusicSource.loop = true;
             backgroundMusicSource.Play();
         }
     }
 
-    // Play Sound Effect
+    // Stop background music
+    public void StopBackgroundMusic()
+    {
+        backgroundMusicSource.Stop();
+    }
+
+    // Play a single sound effect
     public void PlaySFX(int clipIndex)
     {
         if (clipIndex >= 0 && clipIndex < sfxClips.Length)
@@ -46,9 +59,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // Stop Background Music
-    public void StopBackgroundMusic()
+    // Play a sound effect with a custom clip
+    public void PlaySFXCustom(AudioClip clip)
     {
-        backgroundMusicSource.Stop();
+        if (clip != null)
+        {
+            sfxSource.PlayOneShot(clip);
+        }
     }
 }
