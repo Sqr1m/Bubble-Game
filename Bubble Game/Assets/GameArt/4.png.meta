@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0a412da1bb4a52d4e99da1d34180eee3
+guid: cca45afd40adc3645896f2e632530c00
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,91 +95,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Untitled design (1)2551_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1500
-        width: 1013
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a4e976f636b8614d820a984bee0b343
-      internalID: -107124198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled design (1)2551_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1000
-        width: 1013
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a9957246700a9840850d062837dd1c4
-      internalID: 1861466285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled design (1)2551_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 500
-        width: 1013
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b6fd7fe1392fb441ae56a6baca2afd1
-      internalID: -468081012
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled design (1)2551_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1013
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d7e5fdaf8b59104cad58722e0dedcf8
-      internalID: 1268580981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -190,11 +106,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Untitled design (1)2551_0: -107124198
-      Untitled design (1)2551_1: 1861466285
-      Untitled design (1)2551_2: -468081012
-      Untitled design (1)2551_3: 1268580981
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
