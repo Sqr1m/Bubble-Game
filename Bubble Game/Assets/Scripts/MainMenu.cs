@@ -8,6 +8,17 @@ public class MainMenu : MonoBehaviour
     public GameObject muteButton; // "sound off"
     public GameObject unmuteButton; // "sound on"
 
+
+    private void Start()
+    {
+        // Загружаем состояние звука
+        isMuted = PlayerPrefs.GetInt("Muted", 0) == 1;
+        AudioListener.pause = isMuted;
+
+        // Обновляем видимость кнопок
+        UpdateSoundButtons();
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("GameScene");
@@ -15,6 +26,7 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettings()
     {
+        
         SceneManager.LoadScene("Settings");
     }
 
@@ -43,15 +55,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log(isMuted ? "Звук выключен" : "Звук включен");
     }
 
-    private void Start()
-    {
-        // Загружаем состояние звука
-        isMuted = PlayerPrefs.GetInt("Muted", 0) == 1;
-        AudioListener.pause = isMuted;
-
-        // Обновляем видимость кнопок
-        UpdateSoundButtons();
-    }
+    
 
     private void UpdateSoundButtons()
     {
