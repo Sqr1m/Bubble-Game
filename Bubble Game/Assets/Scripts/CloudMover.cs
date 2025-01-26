@@ -2,26 +2,39 @@ using UnityEngine;
 
 public class CloudMover : MonoBehaviour
 {
-    public float speed = 1f; // Speed of cloud movement
-    public float resetPosition = -6f; // Y position where the cloud resets to the top
-    public float startPosition = 10f; // Y position where the cloud starts above the screen
+    public float speed = 100f; // Speed of cloud movement in UI space
+    public float resetPosition = -600f; // Y position where the cloud resets to the top
+    public float startPosition = 600f; // Y position where the cloud starts above the screen
+    public RectTransform canvasRect; // Reference to the canvas RectTransform
+    private RectTransform cloudRect; // RectTransform of the cloud
+    private float initialX; // Store the initial X position
+
+    void Start()
+    {
+        // Get the RectTransform of the cloud
+        cloudRect = GetComponent<RectTransform>();
+
+        // Save the initial X position to maintain consistency
+        initialX = cloudRect.anchoredPosition.x;
+    }
 
     void Update()
     {
-        // Move the cloud downward
-        transform.Translate(Vector3.down * speed * Time.deltaTime);
+        // Move the cloud downward in UI space
+        cloudRect.anchoredPosition -= new Vector2(0, speed * Time.deltaTime);
 
         // Check if the cloud has moved past the reset position
-        if (transform.position.y <= resetPosition)
+        if (cloudRect.anchoredPosition.y <= resetPosition)
         {
             // Reset the cloud back to the top
-            Vector3 newPosition = transform.position;
+            Vector2 newPosition = cloudRect.anchoredPosition;
             newPosition.y = startPosition;
 
-            // Optionally randomize the X position slightly to avoid visible patterns
-            newPosition.x += Random.Range(-1f, 1f);
+            // Use the stored initial X position to keep it consistent
+            newPosition.x = initialX;
 
-            transform.position = newPosition;
+            // Apply the new position
+            cloudRect.anchoredPosition = newPosition;
         }
     }
 }
