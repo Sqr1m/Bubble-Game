@@ -11,12 +11,12 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
 
-        // Устанавливаем параметры для анимации
         animator.SetFloat("MoveX", moveX);
         animator.SetFloat("MoveY", moveY);
         animator.SetBool("IsMoving", moveX != 0 || moveY != 0);
     }
+
 }

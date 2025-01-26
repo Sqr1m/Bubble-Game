@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - UI button
-  - Button
+  - HealItem
+  - DamageItem
   layers:
   - Default
   - TransparentFX
